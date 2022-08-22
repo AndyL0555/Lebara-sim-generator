@@ -43,7 +43,7 @@ try:
 except:
     os.system("pip install webdriver-manager")
 
-catchall = input("Enter catchall along with @ symbol: ")
+catchall = input("Enter catchall: ")
 postcode = input("Enter postcode with space: ")
 address = input("Enter address line 1: ")
 
