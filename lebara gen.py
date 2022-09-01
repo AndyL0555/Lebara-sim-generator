@@ -14,7 +14,6 @@ numbers = ['1','2','3','4','5','6','7','8','9','0']
 
 try:
     import chromedriver_autoinstaller
-    print("Chromedriver auto installer installed!")
 except:
     os.system("pip install chromedriver-autoinstaller")
 try:
@@ -27,19 +26,16 @@ try:
     from selenium.webdriver.chrome.options import Options
     from selenium.webdriver.support.ui import Select
     from selenium.webdriver.support import expected_conditions as EC
-    print("Selenium has been installed.")
 except:
     os.system("pip3 install selenium")
 
 try:
     import undetected_chromedriver as uc
-    print("Undetected Chromedriver has been installed.")
 except:
     os.system("pip3 install undetected-chromedriver")
 
 try:
     from webdriver_manager.chrome import ChromeDriverManager
-    print("Webdriver Manager has been installed.")
 except:
     os.system("pip install webdriver-manager")
 
@@ -52,7 +48,7 @@ lName = random.choice(names)
 
 nLength = 2
 num = ''.join(random.choice(numbers) for i in range(nLength))
-email = str(fName)+str(lName)+str(num)+catchall #chooses random two numbers and the randomly chosen first and last name, then attaches to catchall
+email = str(fName)+str(lName)+str(num)+'@'+catchall #chooses random two numbers and the randomly chosen first and last name, then attaches to catchall
 
 tLength = 9
 number = ''.join(random.choice(numbers) for i in range(tLength))
