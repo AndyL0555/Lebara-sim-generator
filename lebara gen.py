@@ -12,6 +12,16 @@ names = ["jay", "jim", "roy", "axel", "billy", "charlie", "jax", "gina", "paul",
 letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 numbers = ['1','2','3','4','5','6','7','8','9','0']
 
+with open("settings.txt") as text:
+    lines = []
+    for line in text:
+        lines.append(line)
+
+try:
+    from colorama import Fore, Back, Style
+except:
+    os.system("pip install colorama")
+
 try:
     import chromedriver_autoinstaller
 except:
@@ -39,21 +49,13 @@ try:
 except:
     os.system("pip install webdriver-manager")
 
-catchall = input("Enter catchall: ")
-postcode = input("Enter postcode with space: ")
-address = input("Enter address line 1: ")
+# catchall = input("Enter catchall: ")
+# postcode = input("Enter postcode with space: ")
+# address = input("Enter address line 1: ")
 
 fName = random.choice(names)
 lName = random.choice(names)
 
-nLength = 2
-num = ''.join(random.choice(numbers) for i in range(nLength))
-email = str(fName)+str(lName)+str(num)+'@'+catchall #chooses random two numbers and the randomly chosen first and last name, then attaches to catchall
-
-tLength = 9
-number = ''.join(random.choice(numbers) for i in range(tLength))
-num = '07'+str(number)
-print(num)
 
 def lebara():
     link = 'https://mobile.lebara.com/gb/en/free-sim'
@@ -80,11 +82,11 @@ def lebara():
 
     nLength = 2
     num = ''.join(random.choice(numbers) for i in range(nLength))
-    email = str(fName)+str(lName)+str(num)+catchall #chooses random two numbers and the randomly chosen first and last name, then attaches to catchall
+    email = str(fName)+str(lName)+str(num)+"@"+lines[0] #chooses random two numbers and the randomly chosen first and last name, then attaches to catchall
 
     aLength = 3
     abc = ''.join(random.choice(letters) for i in range(aLength))
-    jigged = str(abc)+ ' ' + str(address)
+    jigged = str(abc)+ ' ' + str(lines[2])
 
     tLength = 9
     number = ''.join(random.choice(numbers) for i in range(tLength))
@@ -93,31 +95,31 @@ def lebara():
 
     time.sleep(2)
     driver.find_element(By.XPATH, '//*[@id="onetrust-accept-btn-handler"]').click()
-    print("Accepting cookie popup...")
+    print(Fore.GREEN + "Accepting cookie popup...")
     time.sleep(2)
     driver.find_element(By.XPATH, '/html/body/main/div[6]/div[5]/div/div/a').click()
     time.sleep(2)
-    print("Entering email")
+    print(Fore.GREEN + "Entering email")
     driver.find_element(By.XPATH, '//*[@id="register.email"]').send_keys(email)
     time.sleep(2)
-    print("Entering name")
+    print(Fore.GREEN + "Entering name")
     driver.find_element(By.XPATH, '//*[@id="register.firstName"]').send_keys(fName)
     time.sleep(2)
-    print("Entering last name")
+    print(Fore.GREEN + "Entering last name")
     driver.find_element(By.XPATH, '//*[@id="register.lastName"]').send_keys(lName)
     time.sleep(2)
     driver.find_element(By.XPATH, '//*[@id="checkoutRegisterAddressForm"]/div[5]/div[2]/div[2]/a[2]').click()
     time.sleep(2)
-    print("Entering jigged address")
+    print(Fore.GREEN + "Entering jigged address")
     driver.find_element(By.XPATH, '//*[@id="addressLine1"]').send_keys(jigged)
     time.sleep(2)
-    print("Entering postcode")
-    driver.find_element(By.XPATH, '//*[@id="postCode"]').send_keys(postcode)
+    print(Fore.GREEN + "Entering postcode")
+    driver.find_element(By.XPATH, '//*[@id="postCode"]').send_keys(lines[1])
     time.sleep(2)
     driver.find_element(By.XPATH, '//*[@id="city"]').send_keys('London')
     time.sleep(2)
     driver.find_element(By.XPATH, '//*[@id="submitOrderBtn"]').click()
-    print("Success!")
+    print(Fore.GREEN + "Success!")
 
 count = int(input("How many times would you like the script to run: "))
 i = 0
