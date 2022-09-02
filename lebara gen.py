@@ -123,8 +123,6 @@ def lebara():
 
 count = int(input("How many times would you like the script to run: "))
 i = 0
-if i<count:
+for i in range(1,count+1):
     lebara()
     i+=1
-else:
-    print("Finished!")
